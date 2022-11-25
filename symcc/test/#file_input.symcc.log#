@@ -1,0 +1,79 @@
+`Initializing symbolic runtime
+This is SymCC running with the simple backend
+For anything but debugging SymCC itself, you will want to use the QSYM backend instead (see README.md for build instructions)
+All is good.
+Trying to solve:
+(declare-fun stdin3 () (_ BitVec 8))
+(declare-fun stdin2 () (_ BitVec 8))
+(declare-fun stdin1 () (_ BitVec 8))
+(declare-fun stdin0 () (_ BitVec 8))
+(assert (not (bvsle (concat stdin0 stdin1 stdin2 stdin3) #x00000029)))
+
+Found diverging input:
+stdin2 -> #x00
+stdin3 -> #x2a
+stdin1 -> #x00
+stdin0 -> #x00
+
+Not sure this is correct...
+Trying to solve:
+(declare-fun stdin3 () (_ BitVec 8))
+(declare-fun stdin2 () (_ BitVec 8))
+(declare-fun stdin1 () (_ BitVec 8))
+(declare-fun stdin0 () (_ BitVec 8))
+(declare-fun stdin7 () (_ BitVec 8))
+(declare-fun stdin6 () (_ BitVec 8))
+(declare-fun stdin5 () (_ BitVec 8))
+(declare-fun stdin4 () (_ BitVec 8))
+(assert (bvsle (concat stdin0 stdin1 stdin2 stdin3) #x00000029))
+(assert (not (and (= stdin4 #x61) (= stdin5 #x61) (= stdin6 #x61) (= stdin7 #x61))))
+
+Found diverging input:
+stdin2 -> #x00
+stdin3 -> #x2a
+stdin1 -> #x00
+stdin7 -> #x00
+stdin0 -> #x80
+
+No.
+Warning: input file opened multiple times; this is not yet supported
+Trying to solve:
+(declare-fun stdin3 () (_ BitVec 8))
+(declare-fun stdin2 () (_ BitVec 8))
+(declare-fun stdin1 () (_ BitVec 8))
+(declare-fun stdin0 () (_ BitVec 8))
+(declare-fun stdin7 () (_ BitVec 8))
+(declare-fun stdin6 () (_ BitVec 8))
+(declare-fun stdin5 () (_ BitVec 8))
+(declare-fun stdin4 () (_ BitVec 8))
+(assert (bvsle (concat stdin0 stdin1 stdin2 stdin3) #x00000029))
+(assert (and (= stdin4 #x61) (= stdin5 #x61) (= stdin6 #x61) (= stdin7 #x61)))
+(assert (not (and (= stdin0 #x00) (= stdin1 #x00) (= stdin2 #x00) (= stdin3 #x05))))
+
+Found diverging input:
+stdin3 -> #x2a
+stdin6 -> #x61
+stdin4 -> #x61
+stdin5 -> #x61
+stdin2 -> #x01
+stdin1 -> #x80
+stdin7 -> #x61
+stdin0 -> #x80
+
+Yep, it's the test input.
+Trying to solve:
+(declare-fun stdin3 () (_ BitVec 8))
+(declare-fun stdin2 () (_ BitVec 8))
+(declare-fun stdin1 () (_ BitVec 8))
+(declare-fun stdin0 () (_ BitVec 8))
+(declare-fun stdin7 () (_ BitVec 8))
+(declare-fun stdin6 () (_ BitVec 8))
+(declare-fun stdin5 () (_ BitVec 8))
+(declare-fun stdin4 () (_ BitVec 8))
+(assert (bvsle (concat stdin0 stdin1 stdin2 stdin3) #x00000029))
+(assert (and (= stdin4 #x61) (= stdin5 #x61) (= stdin6 #x61) (= stdin7 #x61)))
+(assert (and (= stdin0 #x00) (= stdin1 #x00) (= stdin2 #x00) (= stdin3 #x05)))
+(assert (not (and (= stdin4 #x61) (= stdin5 #x61) (= stdin6 #x61) (= stdin7 #x61))))
+
+Can't find a diverging input at this point
+Still the test input.
