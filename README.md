@@ -190,6 +190,7 @@ Printed log demonstrates state of the current tree, location of the test case, s
 
 ## Fuzzing Experiments
 
+**Environment set-up**
 ```
 sudo bash -c “echo core >/proc/sys/kernel/core_pattern”
 cd /sys/devices/system/cpu
@@ -218,6 +219,39 @@ cd tcpdump
 CC=/symcc_build/tace ./configure
 make
 ```
+
+Similarly, build LibCap and TCPDump with AFL-clang 
+```
+Inside AFL_BUILD directory
+mkdir /afl_build
+cd /afl_build
+git clone https://github.com/the-tcpdump-group/libpcap.git
+git clone https://github.com/the-tcpdump-group/tcpdump.git
+export AFL_USE_ASAN=1
+cd libpcap
+./autogen.sh
+CC=/afl/afl-clang ./configure
+make
+
+
+
+cd tcpdump
+./autogen.sh
+CC=/afl/afl-clang ./configure
+make
+```
+
+
+Run the Fuzz campaign with TACE
+```
+mkdir /corpus
+echo “AAAAAAAA” > corpus/seed/afl/afl-fuzz -M afl-master -i /corpus/ -o /fuzz_res/afl_out/ -m none -- afl_build/tcpdump/tcpdump -e -r @@
+/afl/afl-fuzz -S afl-secondary -i corpus/ -o /fuzz_res/afl_out/ -m none -- afl_build/tcpdump/tcpdump -e -r @@
+~/.cargo/bin/symcc_fuzzing_helper -o /fuzz_res/afl_out/ -a afl-secondary -n tace -- tace_build/tcpdump/tcpdump -e -r @@
+
+
+```
+
 
 ## License
 
