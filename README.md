@@ -200,7 +200,7 @@ sudo bash -c “echo performance | tee cpu*/cpufreq/scaling_governor”
 
 **Fuzzing Target** TCPDump
 
-Build LibCap with TACE
+Build LibCap with TACE.
 ```
 mkdir /tace_build
 cd /tace_build
@@ -211,7 +211,7 @@ make
 ```
 
 
-Build TCPDump with tace
+Build TCPDump with TACE.
 ```
 git clone  https://github.com/the-tcpdump-group/tcpdump.git
 cd tcpdump
@@ -220,7 +220,7 @@ CC=/symcc_build/tace ./configure
 make
 ```
 
-Similarly, build LibCap and TCPDump with AFL-clang 
+Similarly, build LibCap and TCPDump with AFL-Clang. 
 ```
 Inside AFL_BUILD directory
 mkdir /afl_build
@@ -242,7 +242,7 @@ make
 ```
 
 
-Run the Fuzz campaign with TACE
+Run the Fuzz campaign with TACE.
 ```
 mkdir /corpus
 echo “AAAAAAAA” > corpus/seed/afl/afl-fuzz -M afl-master -i /corpus/ -o /fuzz_res/afl_out/ -m none -- afl_build/tcpdump/tcpdump -e -r @@
