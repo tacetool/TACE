@@ -3,10 +3,24 @@
 
 # TACE
 
-This is a binary-only symbolic/concolic executor based on QEMU, SymCC, and TACE. 
+
+
+## Description
+
+As the number of constraints within an application increases, the cost of solving symbolic constraints grows exponentially, posing a significant challenge when verifying large-scale applications. Fuzz testing is a popular approach to testing open-source software, but testing an input program with numerous symbols may not expose the bug as it explores many program executions. However, a fuzzer can handle fewer symbols when testing a reduced set of symbols for the same program with relevant executions. Taint Assisted Concolic Execution (TACE) utilizes the concept of taint in symbolic execution to identify all sets of dependent symbols. TACE can evaluate a subset of these sets with a significantly reduced testing effort by concretizing some symbols from selected subsets. The remaining subsets are explored with symbolic values. TACE shows substantial enhancement, with constraint-solving times that can achieve a speed improvement of up to 50 times compared to SymQEMU in binary applications. Our experiments, which encompass five open-source libraries (minizip-ng, TPCDump, GifLib, OpenJpeg, bzip2), clearly highlight TACE's superior ability to detect real-world vulnerabilities compared to SymCC.
+
+
+
+
+
+
+
+
+
+
 
 ## How to build
-
+This is a binary-only symbolic/concolic executor based on QEMU, SymCC, and TACE. 
 To understand the build steps, please check (Dockefile)[Dockefile]. It is considered a self-documented step.
 The build happens through several stages of building foundations where TACE patches 
 are applied to required components.
