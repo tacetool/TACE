@@ -1,29 +1,29 @@
-# SymQEMU
+# TACE
 
-This is binary-only symbolic/concolic executor based on QEMU and SymCC and TACE. 
+This is a binary-only symbolic/concolic executor based on QEMU, SymCC, and TACE. 
 
 ## How to build
 
-To understand build steps please check (Dockefile)[Dockefile]. It is considered as self-documented steps.
-Build is happening through several stages of building foundations where TACE pathes 
-applied to required components.
+To understand the build steps, please check (Dockefile)[Dockefile]. It is considered a self-documented step.
+The build happens through several stages of building foundations where TACE patches 
+are applied to required components.
 
-To build a test case it is enough to do following:
+To build a test case, it is enough to do the following:
 
-> please install docker depends on the system you use.
+> Please install docker depending on the system you use.
 
 ```
 docker build -t tace -f Dockefile .
 docker run -it --rm tace /bin/bash
 ```
 
-> This will build the required docker container and environment which is ready to go for development.
+> This will build the required docker container and environment, which is ready to go for development.
 >
-> All necessary patches are applied. Though updating Dockerfile to use other source repos are possible.
+> All necessary patches are applied. Updating the Dockerfile to use other source repos is possible.
 
-## How to run basic example
+## How to run a basic example
 
-Basic example is a program that represents approach where bloating of symbolic deps happening due to deps between branches.
+A basic example program that represents an approach where bloating of symbolic deps happens due to deps between branches.
 
 ```cpp 
 //symbex2.c
