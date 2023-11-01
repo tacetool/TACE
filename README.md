@@ -18,7 +18,7 @@ Taint Assisted Concolic Execution (TACE) utilizes the concept of taint in symbol
 
 
 <p align="center">
-  <img src="https://github.com/tacetool/TACE/blob/main/tacearch.png?raw=true" alt="Sublime's custom image" width="600"/>
+  <img src="https://github.com/tacetool/TACE/blob/main/tacearch.png?raw=true" alt="Sublime's custom image" width="800"/>
 </p>
 
 
