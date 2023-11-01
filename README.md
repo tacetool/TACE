@@ -1,7 +1,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/tacetool/TACE/blob/main/TACE.png?raw=true" alt="Sublime's custom image" width="48"/>
+  <img src="https://github.com/tacetool/TACE/blob/main/TACE.png?raw=true" alt="Sublime's custom image" width="480"/>
 </p>
 
 # TACE
