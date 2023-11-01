@@ -188,6 +188,37 @@ FOR TREE 0x55e94eb26290 :: SYMDEP [ 3 4 6 7 ], CONCRETE DEP [ 0 1 2 5 ]
 
 Printed log demonstrates state of the current tree, location of the test case, solving time, and considered dependencies
 
+## Fuzzing Experiments
+
+```
+sudo bash -c “echo core >/proc/sys/kernel/core_pattern”
+cd /sys/devices/system/cpu
+sudo bash -c “echo performance | tee cpu*/cpufreq/scaling_governor”
+
+```
+
+**Fuzzing Target** TCPDump
+
+Build LibCap with TACE
+```
+mkdir /tace_build
+cd /tace_build
+git clone  https://github.com/the-tcpdump-group/libpcap.git      
+./autogen.sh
+CC=/symcc_build/tace ./configure
+make
+```
+
+
+Build TCPDump with tace
+```
+git clone  https://github.com/the-tcpdump-group/tcpdump.git
+cd tcpdump
+./autogen.sh
+CC=/symcc_build/tace ./configure
+make
+```
+
 ## License
 
 Extends the QEMU,SYMCC,SYMQEMU,SQYM , and our contributions to previously existing
