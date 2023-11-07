@@ -11,7 +11,8 @@ docker run -it --rm giflib-vuln /bin/bash
 
 ./poc.sh
 
-
+[!Crash](crash1.png)
+[!Output](output1.png)
 
 ## Files Description
 1. crashes.zip ==>  contains the sample which can trigger the crash.
