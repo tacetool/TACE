@@ -117,7 +117,7 @@ ENV AFL_CC clang-10
 ENV AFL_CXX clang++-10
 ENV SYMCC_LIBCXX_PATH=/libcxx_symcc_install
 WORKDIR /tmp
-COPY ./symcc/test/sanjay1_loop.c /tmp
+COPY ./symcc/test/test1_loop.c /tmp
 
 #
 # To test. Use sanjay1_loop test that demonstrates the issues with deps and branches
