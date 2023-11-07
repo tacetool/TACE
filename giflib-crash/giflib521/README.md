@@ -11,6 +11,17 @@ docker run -it --rm giflib-vuln /bin/bash
 
 ./poc.sh
 
+
+
+## Files Descriotion
+1. crashes.zip ==>  contains the sample which can trigger the crash.
+
+2. poc.sh ==> contains a bash script that executes the vulnerable gif2rgb program with the input that triggers the crash.
+
+3. Dockerfile ==> dockerfile to create the environment and setup giflib 5.2.1 for easy bug replication.
+
+
+
 ## Installation without Docker
 Environment: Ubuntu 22.04 LTS
 
