@@ -311,15 +311,28 @@ make CFLAGS="-std=gnu99 -fPIC -Wall -Wno-format-truncation -ggdb -fsanitize=addr
 
 ## Uniqueness of the Bug
 
-![Total](totalcode.png)
+We noticed a similar bug with **Fix heap-buffer overflow (CVE-2022-28506)** was reported in the same file **gif2rgb.c** on line number 298.
 
 ![CVE](cve.png)
 
+Refer to the following snapshot of the buggy code from **gif2rgb.c**. Line number 298 has a heap overflow.
+![Total](totalcode.png)
+
+To fix this, the following patch was released. Note that the proposed patch is yet not merged in the latest version of Giflib. 
+
 ![Patch](patch.png)
+
+However, TACE detects a unique (previously unreported) heap-based overflow on a new memory location on line number 321 of the same file **gif2rgb.c**. 
 
 ![Patched](patched.png)
 
+And thus, even after we apply the patch on our target version (with all the latest patches) the vulnerability still persists, as can be seen in the figure below.
+
+
 ![Bug after Patch](BugAfterPatch.png)
+
+
+After the patch application the code at line 321 has now moved to 326, which still has an exposed vulnerability.
 
 ## License
 
