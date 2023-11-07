@@ -130,7 +130,7 @@ By default backend handles STDIN input, but to specify a file that should be tre
 To run simple case(workdir=/tmp):
 
 ```
-cc -O2 sanjay1_loop.c -o test.elf
+cc -O2 test1_loop.c -o test.elf
 echo 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' > input
 SYMCC_INPUT_FILE=/tmp/input SYMCC_OUTPUT_FOLDER=/tmp/output taceqemu /tmp/test.elf /tmp/input
 ```
