@@ -12,9 +12,15 @@ docker run -it --rm giflib-vuln /bin/bash
 ./poc.sh
 
 ------------------------------------------------
+
 ![Crash](crash1.png)
+
 ------------------------------------------------
+
+Address sanitizer output (Heap-based Overflow)
+
 ![Output](output.png)
+
 ------------------------------------------------
 
 ## Files Description
