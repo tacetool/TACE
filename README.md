@@ -311,7 +311,15 @@ make CFLAGS="-std=gnu99 -fPIC -Wall -Wno-format-truncation -ggdb -fsanitize=addr
 
 ## Uniqueness of the Bug
 
+![Total](totalcode.png)
 
+![CVE](cve.png)
+
+![Patch](patch.png)
+
+![Patched](patched.png)
+
+![Bug after Patch](BugAfterPatch.png)
 
 ## License
 
