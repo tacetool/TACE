@@ -13,7 +13,7 @@ docker run -it --rm giflib-vuln /bin/bash
 
 
 
-## Files Descriotion
+## Files Description
 1. crashes.zip ==>  contains the sample which can trigger the crash.
 
 2. poc.sh ==> contains a bash script that executes the vulnerable gif2rgb program with the input that triggers the crash.
