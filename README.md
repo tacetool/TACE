@@ -252,6 +252,8 @@ echo “AAAAAAAA” > corpus/seed/afl/afl-fuzz -M afl-master -i /corpus/ -o /fuz
 
 ```
 
+------------------------------------------------------------
+
 
 ## Giflib 5.2.1 Vuln Poc
 Giflib Version 5.2.1
