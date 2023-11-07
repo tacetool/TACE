@@ -258,8 +258,12 @@ echo “AAAAAAAA” > corpus/seed/afl/afl-fuzz -M afl-master -i /corpus/ -o /fuz
 ## Giflib 5.2.1 Vuln Poc
 Giflib Version 5.2.1
 
+
+
 ## Description
 Heap Based Overflow on Giflib's gif2rgb program. Crashes folder contains the sample that triggers the crash. 
+
+The crash reproduction files and data is available in folder giflib-crash/giflib521/
 
 ## Installation via Dockerfile
 docker build --rm -t giflib-vuln -f Dockerfile .
