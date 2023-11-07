@@ -329,7 +329,7 @@ However, TACE detects a unique (previously unreported) heap-based overflow on a 
 And thus, even after we apply the patch on our target version (with all the latest patches) the vulnerability still persists, as can be seen in the figure below.
 
 
-![Bug after Patch](BugAfterPatch.png)
+![Bug after Patch](bugAfterPatch.png)
 
 
 After the patch application the code at line 321 has now moved to 326, which still has an exposed vulnerability.
