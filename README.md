@@ -307,9 +307,9 @@ make CFLAGS="-std=gnu99 -fPIC -Wall -Wno-format-truncation -ggdb -fsanitize=addr
 ## Usage
 ./giflib-5.2.1/gif2rgb -o out /tmp/crashes/sample
 
-## Roadmap
-Exploit for the bug is under development.
+----------------------------------------------------------------------
 
+## Uniqueness of the Bug
 
 
 
