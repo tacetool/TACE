@@ -117,12 +117,12 @@ ENV AFL_CC clang-10
 ENV AFL_CXX clang++-10
 ENV SYMCC_LIBCXX_PATH=/libcxx_symcc_install
 WORKDIR /tmp
-COPY ./symcc/test/test1_loop.c /tmp
+COPY ./symcc/test/symex2.c /tmp
 
 #
-# To test. Use test1_loop test that demonstrates the issues with deps and branches
-# cp /symqemu/symcc/test/test1_loop.c /tmp/ && cd /tmp
-# cc -O2 -o test.elf /tmp/test1_loop.c
+# To test. Use symex2.c test that demonstrates the issues with deps and branches
+# cp /symqemu/symcc/test/symex2.c /tmp/ && cd /tmp
+# cc -O2 -o test.elf /tmp/symex2.c
 # echo 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' > input 
 # SYMCC_INPUT_FILE=/tmp/input taceqemu /tmp/input
 # Check folder /tmp/output for generated test cases, also log is going to be printed
