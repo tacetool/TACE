@@ -50,7 +50,7 @@ docker run -it --rm tace /bin/bash
 A basic example program that represents an approach where bloating of symbolic deps happens due to deps between branches.
 
 ```cpp 
-//symbex2.c
+//symex2.c
 #include <stdio.h>
 #include <stdlib.h>
 
