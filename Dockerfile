@@ -120,9 +120,9 @@ WORKDIR /tmp
 COPY ./symcc/test/test1_loop.c /tmp
 
 #
-# To test. Use sanjay1_loop test that demonstrates the issues with deps and branches
-# cp /symqemu/symcc/test/sanjay1_loop.c /tmp/ && cd /tmp
-# cc -O2 -o test.elf /tmp/sanjay1_loop.c
+# To test. Use test1_loop test that demonstrates the issues with deps and branches
+# cp /symqemu/symcc/test/test1_loop.c /tmp/ && cd /tmp
+# cc -O2 -o test.elf /tmp/test1_loop.c
 # echo 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' > input 
 # SYMCC_INPUT_FILE=/tmp/input taceqemu /tmp/input
 # Check folder /tmp/output for generated test cases, also log is going to be printed
