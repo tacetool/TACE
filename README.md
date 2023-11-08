@@ -315,8 +315,9 @@ We noticed a similar bug with **Fix heap-buffer overflow (CVE-2022-28506)** was 
 
 ![CVE](cve.png)
 
-Refer to the following snapshot of the buggy code from **gif2rgb.c**. Line number 298 has a heap overflow.
-![Total](totalcode.png)
+Please take a look at the following snapshot of the buggy code from ** gif2rgb.c**. Line number 298 has a heap overflow.
+
+![Total](totalslide.png)
 
 To fix this, the following patch was released. Note that the proposed patch is yet not merged in the latest version of Giflib. 
 
