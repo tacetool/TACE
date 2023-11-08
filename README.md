@@ -311,12 +311,14 @@ make CFLAGS="-std=gnu99 -fPIC -Wall -Wno-format-truncation -ggdb -fsanitize=addr
 
 ## Uniqueness of the Bug
 
-We noticed a similar bug with **Fix heap-buffer overflow (CVE-2022-28506)** that was reported in the same file **gif2rgb.c** on line number 293. Whereas we report a previously unknown/unreported vulnerability at line number 316.
+
+![CVE](cve.png)
+
+We noticed a similar bug with **Fix heap-buffer overflow (CVE-2022-28506)** that was reported in the same file **gif2rgb.c** on line number 293. In comparison, we report a previously unknown/unreported vulnerability at line number 316.
 
 Note: The line numbers may vary in the next figures. Kindly match with the code lines.
 
 
-![CVE](cve.png)
 
 Please look at the following snapshot of the buggy code from ** gif2rgb.c**. Line number 298 has a heap overflow.
 
