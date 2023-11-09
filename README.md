@@ -261,8 +261,7 @@ Giflib Version 5.2.1
 
 
 ## Description
-Heap Based Overflow on Giflib's gif2rgb program. Crashes folder contains the sample that triggers the crash. 
-
+A heap buffer overflow vulnerability exists in the DumpScreen2RGB function within the gif2rgb.c component of GifLib 5.2.1 specifically between lines 321 and 323. The flaw can be exploited when handling a specially crafted GIF during the image-saving process. It is important to note that this issue is distinct from CVE-2022-28506. While the [5b74cd] commit effectively addresses CVE-2022-28506, it does not provide a resolution for this particular heap-buffer overflow problem.
 The crash reproduction files and data is available in folder **giflib-crash/giflib521/**
 
 ## Installation via Dockerfile
@@ -314,31 +313,22 @@ make CFLAGS="-std=gnu99 -fPIC -Wall -Wno-format-truncation -ggdb -fsanitize=addr
 
 ![CVE](cve.png)
 
-We noticed a similar bug with **Fix heap-buffer overflow (CVE-2022-28506)** that was reported in the same file **gif2rgb.c** on line number 293. In comparison, we report a previously unknown/unreported vulnerability at line number 316.
-
-Note: The line numbers may vary in the next figures. Kindly match with the code lines.
-
-
-
-Please look at the following snapshot of the buggy code from ** gif2rgb.c**. Line number 298 has a heap overflow.
-
-![Total](totalslide.png)
-
-To fix this, the following patch was released. Note that the proposed patch has not yet merged in the latest version of Giflib. 
+We noticed a similar bug with **Fix heap-buffer overflow (CVE-2022-28506)** that was reported in the same file **gif2rgb.c** on line number 298. 
+This  newly detected issue is separate from CVE-2022-28506 since it occurs specifically during the image-saving process. A patch was developed to remedy CVE-2022-28506, however the patch has not been integrated into the latest version of Giflib. 
 
 ![Patch](patch.png)
 
-However, TACE detects a unique (previously unreported) heap-based overflow on a new memory location on line number 321 of the same file **gif2rgb.c**. 
+Nevertheless, Fedora has taken the initiative to release an official patch to address the issue. https://bodhi.fedoraproject.org/updates/FEDORA-2022-964883b2a5
 
-![Patched](patched.png)
+Even with the implementation of this patch, the newly discovered heap buffer overflow, which was detected by TACE on line 321 of the file gif2rgb.c, still remains exploitable.
 
-And thus, even after we apply the patch on our target version (with all the latest patches), the vulnerability still persists, as can be seen in the figure below.
+![new_bug](https://github.com/tacetool/TACE/assets/145659568/fb679731-4df8-4a55-8350-6a31a334fec9)
 
+
+In the provided proof of concept (POC) screenshot, it is evident that while the original CVE-2022-28506 is effectively mitigated after applying the patch, the newly identified heap buffer overflow issue within the image-saving process continues to persist and remains exploitable.
 
 ![Bug after Patch](bugAfterPatch.png)
 
-
-After the patch application the code at line 321 has now moved to 326, which still has an exposed vulnerability.
 
 ## License
 
