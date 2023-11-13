@@ -309,12 +309,12 @@ make CFLAGS="-std=gnu99 -fPIC -Wall -Wno-format-truncation -ggdb -fsanitize=addr
 ## Uniqueness of the Bug
 
 
-![CVE](cve.png)
+![CVE](tace/cve.png)
 
 We noticed a similar bug with **Fix heap-buffer overflow (CVE-2022-28506)** that was reported in the same file **gif2rgb.c** on line number 298. 
 This  newly detected issue is separate from CVE-2022-28506 since it occurs specifically during the image-saving process. A patch was developed to remedy CVE-2022-28506, however the patch has not been integrated into the latest version of Giflib. 
 
-![Patch](patch.png)
+![Patch](tace/patch.png)
 
 Nevertheless, Fedora has taken the initiative to release an official patch to address the issue. https://bodhi.fedoraproject.org/updates/FEDORA-2022-964883b2a5
 
