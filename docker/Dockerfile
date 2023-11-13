@@ -117,7 +117,7 @@ ENV AFL_CC clang-10
 ENV AFL_CXX clang++-10
 ENV SYMCC_LIBCXX_PATH=/libcxx_symcc_install
 WORKDIR /tmp
-COPY ./symcc/test/symex2.c /tmp
+COPY ../symcc/test/symex2.c /tmp
 
 #
 # To test. Use symex2.c test that demonstrates the issues with deps and branches
