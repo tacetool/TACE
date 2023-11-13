@@ -271,13 +271,13 @@ docker run -it --rm giflib-vuln /bin/bash
 
 ------------------------------------------------
 
-![Crash](giflib-crash/giflib521/crash1.png)
+![Crash](tace/giflib-crash/giflib521/crash1.png)
 
 ------------------------------------------------
 
 Address sanitizer output (Heap-based Overflow)
 
-![Output](giflib-crash/giflib521/output.png)
+![Output](tace/giflib-crash/giflib521/output.png)
 
 ------------------------------------------------
 
