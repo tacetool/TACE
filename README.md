@@ -325,7 +325,7 @@ Even with the implementation of this patch, the newly discovered heap buffer ove
 
 In the provided proof of concept (POC) screenshot, it is evident that while the original CVE-2022-28506 is effectively mitigated after applying the patch, the newly identified heap buffer overflow issue within the image-saving process continues to persist and remains exploitable.
 
-![Bug after Patch](bugAfterPatch.png)
+![Bug after Patch](tace/bugAfterPatch.png)
 
 
 ## License
