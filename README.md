@@ -24,23 +24,31 @@ The above figure illustrates the hybrid fuzzing architecture of TACE. The input 
 
 
 
-## How to build
-This is a binary-only symbolic/concolic executor based on QEMU, SymCC, and TACE. 
-To understand the build steps, please check (Dockefile)[Dockefile]. It is considered a self-documented step.
-The build happens through several stages of building foundations where TACE patches 
-are applied to required components.
+## How to build TACE
 
-To build a test case, it is enough to do the following:
+A Docker container has been created for TACE, which is built upon SymCC, QEMU, and LLVM. This approach ensures a streamlined and user-friendly setup process, as the containerization effectively manages compatibility and dependency issues. During the build phase, the necessary dependencies are installed, and TACE patches are applied to the relevant components. Tested on Ubuntu LTS 22.04.1
 
-> Please install docker depending on the system you use.
 
-```
-docker build -t tace -f Dockefile .
-docker run -it --rm tace /bin/bash
-```
+0. Install  Docker Engine. For Ubuntu-specific guidance, refer to https://docs.docker.com/engine/install/ubuntu/ for detailed information.
 
-> This will build the required docker container and environment, which is ready to go for development.
->
+1. Clone the git repository of TACE:
+   ```
+   git clone https://github.com/tacetool/TACE
+   ```
+
+3. Build the docker container:
+	```
+	cd TACE/tace && sudo docker build -t tace -f TACE_docker .
+	```
+
+4. Run and thest the docker
+	```
+	sudo docker run -it --rm tace /bin/bash
+	```
+
+
+
+> The above steps have successfully built the TACE Docker container, which is now ready for use.
 > All necessary patches are applied. Updating the Dockerfile to use other source repos is possible.
 
 ## How to run a basic example
