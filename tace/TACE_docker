@@ -93,7 +93,8 @@ RUN cmake -G Ninja \
 #
 FROM builder_qsym AS builder_symqemu
 WORKDIR /symqemu/build
-RUN /symqemu/configure --audio-drv-list= \
+RUN chmod +x /symqemu/configure && \
+/symqemu/configure --audio-drv-list= \
                --disable-bluez \
                --disable-sdl \
                --disable-gtk \
