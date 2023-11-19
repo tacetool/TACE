@@ -265,18 +265,27 @@ Affected version : Giflib Version 5.2.1
 
 ### Vulnerability Description
 A heap buffer overflow vulnerability exists in the DumpScreen2RGB function within the gif2rgb.c component of GifLib 5.2.1 specifically between lines 321 and 323. The flaw can be exploited when handling a specially crafted GIF during the image-saving process. It is important to note that this issue is distinct from CVE-2022-28506. While the [5b74cd] commit effectively addresses CVE-2022-28506, it does not provide a resolution for this particular heap-buffer overflow problem.
-The crash reproduction files and data is available in folder **giflib-crash/giflib521/**
+
+The crash reproduction files and data is available in folder `TACE/tace/giflib-crash/giflib521/`.
 
 ### Replicating the Vulnerability
 
-The heap buffer overflow detected by TACe is easily replicable using the provided Docker image.
+The heap buffer overflow detected by TACE is easily replicable using the provided Docker image.
+To replicate the CVE-2023-48161 vulnerability, execute the `POC_crash_docker` from the `TACE/tace/giflib-crash/giflib521/` directory.
 
-docker build --rm -t giflib-vuln -f Dockerfile .
+STEP 1(Build the Dcoker image):
+```
+sudo docker build --rm -t giflib-vuln -f POC_crash_docker .
+```
+STEP 2( Running rhe container):
+```
+sudo docker run -it --rm giflib-vuln /bin/bash
+```
 
-docker run -it --rm giflib-vuln /bin/bash
-
+STEP 3 (Running rhe PoC bas script):
+```
 ./poc.sh
-
+```
 ------------------------------------------------
 
 ![Crash](tace/giflib-crash/giflib521/crash1.png)
@@ -289,18 +298,19 @@ Address sanitizer output (Heap-based Overflow)
 
 ------------------------------------------------
 
-## Files Description
+### Files Description
 1. crashes.zip ==>  contains the sample which can trigger the crash.
 
 2. poc.sh ==> contains a bash script that executes the vulnerable gif2rgb program with the input that triggers the crash.
 
-3. Dockerfile ==> dockerfile to create the environment and setup giflib 5.2.1 for easy bug replication.
+3. POC_crash_docker  ==> dockerfile to create the environment and setup giflib 5.2.1 for easy bug replication.
 
 
 
-## Installation without Docker
+### GifLib Installation without Docker
+
 Environment: Ubuntu 22.04 LTS
-
+```
 wget https://yer.dl.sourceforge.net/project/giflib/giflib-5.2.1.tar.gz
 
 tar -xf giflib-5.2.1.tar.gz
@@ -308,33 +318,10 @@ tar -xf giflib-5.2.1.tar.gz
 cd giflib-5.2.1
 
 make CFLAGS="-std=gnu99 -fPIC -Wall -Wno-format-truncation -ggdb -fsanitize=address,undefined,leak,integer -fno-omit-frame-pointer"
-
-## Usage
-./giflib-5.2.1/gif2rgb -o out /tmp/crashes/sample
+```
+Replicate the crash: `./giflib-5.2.1/gif2rgb -o out /tmp/crashes/sample`
 
 ----------------------------------------------------------------------
-
-## Uniqueness of the Bug
-
-
-![CVE](tace/cve.png)
-
-We noticed a similar bug with **Fix heap-buffer overflow (CVE-2022-28506)** that was reported in the same file **gif2rgb.c** on line number 298. 
-This  newly detected issue is separate from CVE-2022-28506 since it occurs specifically during the image-saving process. A patch was developed to remedy CVE-2022-28506, however the patch has not been integrated into the latest version of Giflib. 
-
-![Patch](tace/patch.png)
-
-Nevertheless, Fedora has taken the initiative to release an official patch to address the issue. https://bodhi.fedoraproject.org/updates/FEDORA-2022-964883b2a5
-
-Even with the implementation of this patch, the newly discovered heap buffer overflow, which was detected by TACE on line 321 of the file gif2rgb.c, still remains exploitable.
-
-![new_bug](https://github.com/tacetool/TACE/assets/145659568/fb679731-4df8-4a55-8350-6a31a334fec9)
-
-
-In the provided proof of concept (POC) screenshot, it is evident that while the original CVE-2022-28506 is effectively mitigated after applying the patch, the newly identified heap buffer overflow issue within the image-saving process continues to persist and remains exploitable.
-
-![Bug after Patch](tace/bugAfterPatch.png)
-
 
 ## License
 
