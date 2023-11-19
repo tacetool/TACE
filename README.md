@@ -41,7 +41,7 @@ A Docker container has been created for TACE, which is built upon SymCC, QEMU, a
 	cd TACE/tace && sudo docker build -t tace -f TACE_docker .
 	```
 
-4. Run and thest the docker
+4. Run and test the docker
 	```
 	sudo docker run -it --rm tace /bin/bash
 	```
@@ -51,10 +51,15 @@ A Docker container has been created for TACE, which is built upon SymCC, QEMU, a
 > The above steps have successfully built the TACE Docker container, which is now ready for use.
 > All necessary patches are applied. Updating the Dockerfile to use other source repos is possible.
 
-## How to run a basic example
+## Getting Started with TACE
 
-A basic example program that represents an approach where bloating of symbolic deps happens due to deps between branches.
+Once the command `sudo docker run -it --rm tace /bin/bash` is executed, the environment becomes ready for use.
 
+#### A. Constraints Solving with TACE
+
+`symex2.c` has been designed for demonstration purposes, closely mirroring real-world projects with its numerous if-then-else branches that make achieving complete code coverage a challenging task.
+
+Example source code for `symex2.c`:
 ```cpp 
 //symex2.c
 #include <stdio.h>
@@ -129,11 +134,10 @@ int main(int argc, char *argv[])
 
 ```
 
-Once docker is run, WORKDIR is set up for `/tmp` folder.
-You might find there the source above, created folder for the cases and garbage.
-By default, the backend handles STDIN input, but to specify a file that should be treated as symbolic, use  the `SYMCC_INPUT_FILE` variable. If you want to change the output folder location, use the `SYMCC_OUTPUT_DIR` variable. Check below
+After running Docker, the WORKDIR is established as the `/tmp` folder. Here, you will  find the previously mentioned source code. The backend typically manages input from STDIN by default. However, to designate a specific file as symbolic, you can set the `SYMCC_INPUT_FILE` variable. For changing where output files are saved, use the `SYMCC_OUTPUT_DIR` variable
 
-To run simple case(workdir=/tmp):
+
+To run a simple case (where the workdir is `/tmp`), use the following command:
 
 ```
 cc -O2 symex2.c -o test.elf
@@ -143,7 +147,7 @@ SYMCC_INPUT_FILE=/tmp/input SYMCC_OUTPUT_FOLDER=/tmp/output taceqemu /tmp/test.e
 
 Example of output:
 
-```
+```cpp 
 FOR TREE 0x55e94ea2a040 :: SYMDEP [ ], CONCRETE DEP [ ]
 
 [STAT] SMT: {"solving_time_elapsed": 1242 }
@@ -192,11 +196,14 @@ FOR TREE 0x55e94eb26290 :: SYMDEP [ 3 4 6 7 ], CONCRETE DEP [ 0 1 2 5 ]
 
 ```
 
-Printed log demonstrates state of the current tree, location of the test case, solving time, and considered dependencies
+Printed log demonstrates state of the current tree, location of the test case, solving time, and considered dependencies.
 
-## Fuzzing Experiments
+#### B. Constraints Solving with TACE
 
-**Environment set-up**
+
+To configure the environment, execute the following command:
+
+
 ```
 sudo bash -c “echo core >/proc/sys/kernel/core_pattern”
 cd /sys/devices/system/cpu
@@ -211,7 +218,7 @@ Build LibCap with TACE.
 mkdir /tace_build
 cd /tace_build
 git clone  https://github.com/the-tcpdump-group/libpcap.git      
-./autogen.sh
+cd libpcap && ./autogen.sh
 CC=/symcc_build/tace ./configure
 make
 ```
