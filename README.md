@@ -198,20 +198,8 @@ FOR TREE 0x55e94eb26290 :: SYMDEP [ 3 4 6 7 ], CONCRETE DEP [ 0 1 2 5 ]
 
 Printed log demonstrates state of the current tree, location of the test case, solving time, and considered dependencies.
 
-#### B. Constraints Solving with TACE
+#### B. Fuzzing with TACE (target: TCPDump)
 
-
-To configure the environment, execute the following command:
-
-
-```
-sudo bash -c “echo core >/proc/sys/kernel/core_pattern”
-cd /sys/devices/system/cpu
-sudo bash -c “echo performance | tee cpu*/cpufreq/scaling_governor”
-
-```
-
-**Fuzzing Target** TCPDump
 
 Build LibCap with TACE.
 ```
@@ -220,22 +208,22 @@ cd /tace_build
 git clone  https://github.com/the-tcpdump-group/libpcap.git      
 cd libpcap && ./autogen.sh
 CC=/symcc_build/tace ./configure
-make
+make && make install
+
 ```
 
 
 Build TCPDump with TACE.
 ```
 git clone  https://github.com/the-tcpdump-group/tcpdump.git
-cd tcpdump
-./autogen.sh
+cd tcpdump &&./autogen.sh
 CC=/symcc_build/tace ./configure
-make
+make && make install
 ```
 
-Similarly, build LibCap and TCPDump with AFL-Clang. 
+Similarly, build LibCap and TCPDump with AFL-clang. 
+
 ```
-Inside AFL_BUILD directory
 mkdir /afl_build
 cd /afl_build
 git clone https://github.com/the-tcpdump-group/libpcap.git
@@ -244,24 +232,23 @@ export AFL_USE_ASAN=1
 cd libpcap
 ./autogen.sh
 CC=/afl/afl-clang ./configure
-make
-
-
-
-cd tcpdump
+make && make install
+cd /afl_build/tcpdump/
 ./autogen.sh
 CC=/afl/afl-clang ./configure
-make
+make && make install
+
 ```
 
 
 Run the Fuzz campaign with TACE.
-```
-mkdir /corpus
-echo “AAAAAAAA” > corpus/seed/afl/afl-fuzz -M afl-master -i /corpus/ -o /fuzz_res/afl_out/ -m none -- afl_build/tcpdump/tcpdump -e -r @@
-/afl/afl-fuzz -S afl-secondary -i corpus/ -o /fuzz_res/afl_out/ -m none -- afl_build/tcpdump/tcpdump -e -r @@
-~/.cargo/bin/symcc_fuzzing_helper -o /fuzz_res/afl_out/ -a afl-secondary -n tace -- tace_build/tcpdump/tcpdump -e -r @@
 
+```
+mkdir /corpus && mkdir /fuzz_res && mkdir /fuzz_res/afl_out/
+echo "AAAAAAAA" > /corpus/seed 
+/afl/afl-fuzz -M afl-master -i /corpus/ -o /fuzz_res/afl_out/ -m none -- /afl_build/tcpdump/tcpdump -e -r @@
+/afl/afl-fuzz -S afl-secondary -i corpus/ -o /fuzz_res/afl_out/ -m none -- /afl_build/tcpdump/tcpdump -e -r @@
+~/.cargo/bin/symcc_fuzzing_helper -o /fuzz_res/afl_out/ -a afl-secondary -n tace -- /tace_build/tcpdump/tcpdump -e -r @@
 
 ```
 
