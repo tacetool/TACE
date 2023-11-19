@@ -251,6 +251,9 @@ echo "AAAAAAAA" > /corpus/seed
 ~/.cargo/bin/symcc_fuzzing_helper -o /fuzz_res/afl_out/ -a afl-secondary -n tace -- /tace_build/tcpdump/tcpdump -e -r @@
 
 ```
+<p align="center">
+<img width="585" alt="TACE_campaign" src="https://github.com/tacetool/TACE/assets/145659568/8c0f1fac-9de1-4bd8-b66e-79380358abce">
+</p>
 
 ------------------------------------------------------------
 
