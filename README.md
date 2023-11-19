@@ -258,7 +258,7 @@ echo "AAAAAAAA" > /corpus/seed
 ------------------------------------------------------------
 
 
-## Giflib 5.2.1 Vuln Poc
+## Giflib 5.2.1 Vuln Poc (CVE-2023-48161)
 Giflib Version 5.2.1
 
 
