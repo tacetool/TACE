@@ -273,7 +273,7 @@ The crash reproduction files and data is available in folder `TACE/tace/giflib-c
 The heap buffer overflow detected by TACE is easily replicable using the provided Docker image.
 To replicate the CVE-2023-48161 vulnerability, execute the `POC_crash_docker` from the `TACE/tace/giflib-crash/giflib521/` directory.
 
-STEP 1(Build the Dcoker image):
+STEP 1(Build the Docker image):
 ```
 sudo docker build --rm -t giflib-vuln -f POC_crash_docker .
 ```
