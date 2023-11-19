@@ -26,6 +26,8 @@ RUN sed -i '/deb-src/s/^# //' /etc/apt/sources.list \
         python3-pip \
         zlib1g-dev \
         less \
+        flex \
+        bison \
         emacs \
     && ln -s /usr/bin/python2 /usr/bin/python
 
