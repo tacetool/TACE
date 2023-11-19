@@ -258,31 +258,28 @@ echo "AAAAAAAA" > /corpus/seed
 ------------------------------------------------------------
 
 
-## Giflib 5.2.1 Heap buffer overflow (CVE-2023-48161)
+## CVE-2023-48161
 
-Affected version : Giflib Version 5.2.1
-
-
-### Vulnerability Description
 A heap buffer overflow vulnerability exists in the DumpScreen2RGB function within the gif2rgb.c component of GifLib 5.2.1 specifically between lines 321 and 323. The flaw can be exploited when handling a specially crafted GIF during the image-saving process. It is important to note that this issue is distinct from CVE-2022-28506. While the [5b74cd] commit effectively addresses CVE-2022-28506, it does not provide a resolution for this particular heap-buffer overflow problem.
 
-The crash reproduction files and data is available in folder `TACE/tace/giflib-crash/giflib521/`.
+
 
 ### Replicating the Vulnerability
+The crash reproduction files and data is available in folder `TACE/tace/giflib-crash/giflib521/`.
 
 The heap buffer overflow detected by TACE is easily replicable using the provided Docker image.
 To replicate the CVE-2023-48161 vulnerability, execute the `POC_crash_docker` from the `TACE/tace/giflib-crash/giflib521/` directory.
 
-STEP 1(Build the Docker image):
+STEP 1 (Build the Docker image):
 ```
 sudo docker build --rm -t giflib-vuln -f POC_crash_docker .
 ```
-STEP 2( Running rhe container):
+STEP 2 (Running the container):
 ```
 sudo docker run -it --rm giflib-vuln /bin/bash
 ```
 
-STEP 3 (Running rhe PoC bas script):
+STEP 3 (Running rhe PoC bash script):
 ```
 ./poc.sh
 ```
