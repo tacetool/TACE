@@ -12,6 +12,28 @@
 Taint Assisted Concolic Execution (TACE) utilizes the concept of taint in symbolic execution to identify all sets of dependent symbols. TACE can evaluate a subset of these sets with a significantly reduced testing effort by concretizing some symbols from selected subsets. The remaining subsets are explored with symbolic values. TACE optimizes symbolic constraints, facilitating a streamlined symbolic execution process that emphasizes the critical aspects of program behavior. Doing so contributes to a more practical and scalable approach for identifying vulnerabilities, generating comprehensive test suites, and aiding software security analysis. TACE stands out as an ideal tool for uncovering real vulnerabilities in applications, owing to its substantial enhancements in the realms of constraint solving and fuzzing. This makes it a highly effective asset in the practice of software analysis.
 
 
+## Cite
+
+The TACE paper has been accepted for publication in the FSE 2024 Companion Proceedings of the 32nd ACM International Conference on the Foundations of Software Engineering. Cite paper (ACM digital library): [https://dl.acm.org/doi/10.1145/3617555.3617874](https://dl.acm.org/doi/10.1145/3663529.3663812)
+```python
+@inproceedings{10.1145/3663529.3663812,
+author = {Jain, Ridhi and Tihanyi, Norbert and Ndhlovu, Mthandazo and Ferrag, Mohamed Amine and Cordeiro, Lucas C.},
+title = {Rapid Taint Assisted Concolic Execution (TACE)},
+year = {2024},
+isbn = {9798400706585},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3663529.3663812},
+doi = {10.1145/3663529.3663812},
+abstract = {While fuzz testing is a popular choice for testing open-source software, it might not effectively detect bugs in programs that feature many symbols due to the significant increase in exploration of the program executions. Fuzzers can be more effective when they concentrate on a smaller and more relevant set of symbols, focusing specifically on the key executions. We present rapid Taint Assisted Concolic Execution (TACE), which utilizes the concept of taint in symbolic execution to identify all sets of dependent symbols. TACE can evaluate a subset of these sets with a significantly reduced testing effort by concretizing some symbols from selected subsets. The remaining subsets are explored with symbolic values. TACE significantly enhances speed, achieving a 50x constraint-solving time improvement over SymQEMU in binary applications. In our fuzzing campaign, we tested five popular open-source libraries (minizip-ng, TPCDump, GifLib, OpenJpeg, bzip2) and identified a new heap buffer overflow in the latest version of GifLib 5.2.1 with an assigned CVE-2023-48161 number. Under identical conditions and hardware environments, SymCC could not identify the same issue, underscoring TACE's enhanced capability in quickly discovering real-world vulnerabilities.},
+booktitle = {Companion Proceedings of the 32nd ACM International Conference on the Foundations of Software Engineering},
+pages = {627–631},
+numpages = {5},
+keywords = {Fuzzing, Symbolic Execution, Taint Assisted Concolic Execution},
+location = {Porto de Galinhas, Brazil},
+series = {FSE 2024}
+}
+```
 ## Architecture
 
 <p align="center">
