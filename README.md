@@ -14,7 +14,8 @@ Taint Assisted Concolic Execution (TACE) utilizes the concept of taint in symbol
 
 ## Cite
 
-The TACE paper has been accepted for publication in the FSE 2024 Companion Proceedings of the 32nd ACM International Conference on the Foundations of Software Engineering. Cite paper (ACM digital library): [https://dl.acm.org/doi/10.1145/3617555.3617874](https://dl.acm.org/doi/10.1145/3663529.3663812)
+The TACE paper has been accepted for publication in the 32nd ACM International Conference on the Foundations of Software Engineering (FSE 2024). 
+Cite paper (ACM digital library): [https://dl.acm.org/doi/10.1145/3617555.3617874](https://dl.acm.org/doi/10.1145/3663529.3663812)
 ```python
 @inproceedings{10.1145/3663529.3663812,
 author = {Jain, Ridhi and Tihanyi, Norbert and Ndhlovu, Mthandazo and Ferrag, Mohamed Amine and Cordeiro, Lucas C.},
